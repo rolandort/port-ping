@@ -8,9 +8,10 @@
 
 import socket
 import time
+from os import system
 from datetime import datetime
 
-ip = "192.168.178.99"
+ip = "127.0.0.1" #"192.168.178.99"
 port = 80 # port e.g. 80, 3232, 6053
 naptime = 1 # timeout in sec
 
@@ -24,10 +25,19 @@ class chars:
     OPEN = '⣿' # '█' 
     CLOSED = '⣀' # '_'
 
+def print_char(x, y, char):
+    print("\033["+str(y)+";"+str(x)+"H"+char)
+
 # Counters
 i = 0
 open = 0
 closed = 0
+
+system("clear||cls")
+
+print_char(2, 2, "X")
+print_char(4, 4, "X")
+print_char(10, 10, "X")
 
 print(f"Pinging {ip}:{port} with timeout {naptime} sec...")
 print(f"HH:MM\tConnection Status{' '*39}Availability")
